@@ -7,9 +7,8 @@ Code for experiments on synthetic datasets:
 
 Code for experiments on benchmark datasets:
 
-"alpha_prime_full.R"
-
-"alpha_prime_tinyimagenet.R"
+"alpha_prime_full.R" (this one is for six UCI datasets and MNIST)
+"alpha_prime_tinyimagenet.R" (this one is for Tiny ImageNet)
 
 Code for producing learning curve of nine estimators for alpha:
 
@@ -22,9 +21,7 @@ Code for comparing the performance of five etsimators for alpha and threshold es
 Code for comparing the performance of five estimators for alpha and threshold estimation, using predicted probabilities from classifiers:
 
 "int_five_alpha_10_prob.R"
-
 "int_five_alpha_20_prob.R"
-
 "int_five_alpha_40_prob.R"
 
 
