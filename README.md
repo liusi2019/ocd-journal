@@ -8,6 +8,7 @@ Code for experiments on synthetic datasets:
 Code for experiments on benchmark datasets:
 
 "alpha_prime_full.R" (this one is for six UCI datasets and MNIST)
+
 "alpha_prime_tinyimagenet.R" (this one is for Tiny ImageNet)
 
 Code for producing learning curve of nine estimators for alpha:
