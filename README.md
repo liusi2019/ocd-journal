@@ -1,7 +1,7 @@
 # Open Category Detection with PAC Guarantees and Sample Size Analysis
 Code for replicating the experimental results in ocd journel version.
 
-Code for experiments on synthetic datasets:
+## Code for experiments on synthetic datasets:
 
 "Open-Category-Detection-with-PAC-Guaranteesp-Synthetic.ipynb"
 
