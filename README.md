@@ -1,9 +1,13 @@
 # Open Category Detection with PAC Guarantees and Sample Size Analysis
 Code for replicating the experimental results in ocd journel version.
 
+The iForest (Isolation Forest) inplementation used here is provided by Tadesse ZeMicheal and available from https://github.com/tadeze/osu_iforest .
+
 ### Threshold estimate experiments on synthetic datasets:
 
 "Open-Category-Detection-with-PAC-Guaranteesp-Synthetic.ipynb"
+
+The bootstrap and out-of-bag version of Loda used here is provided Tadesse ZeMicheal and Si Liu and available as an R package from https://github.com/liusi2019/btloda .
 
 ### Threshold estimate experiments on benchmark datasets:
 
