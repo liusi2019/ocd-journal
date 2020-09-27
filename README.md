@@ -13,7 +13,7 @@ Code for comparing the performance of five etsimators for alpha and threshold es
 
 "iforest_five_alpha.R"
 
-Code for comparing the performance of five estimators for alpha and threshold estimation, using predicted probablities from classifiers:
+Code for comparing the performance of five estimators for alpha and threshold estimation, using predicted probabilities from classifiers:
 
 "int_five_alpha_10_prob.R"
 
