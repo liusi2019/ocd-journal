@@ -17,9 +17,9 @@ Code for comparing the performance of five estimators for alpha and threshold es
 
 "int_five_alpha_10_prob.R"
 
-"int_five_alpha_10_prob.R"
+"int_five_alpha_20_prob.R"
 
-"int_five_alpha_10_prob.R"
+"int_five_alpha_40_prob.R"
 
 
 
