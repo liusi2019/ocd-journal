@@ -5,6 +5,12 @@ Code for experiments on synthetic datasets:
 
 "Open-Category-Detection-with-PAC-Guaranteesp-Synthetic.ipynb"
 
+Code for experiments on benchmark datasets:
+
+"alpha_prime_full.R"
+
+"alpha_prime_tinyimagenet.R"
+
 Code for producing learning curve of nine estimators for alpha:
 
 "learning_curve_nine.R"
