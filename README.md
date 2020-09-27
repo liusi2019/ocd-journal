@@ -7,9 +7,9 @@ Code for replicating the experimental results in ocd journel version.
 
 ### Threshold estimate experiments on benchmark datasets:
 
-"alpha_prime_full.R" (this one is for six UCI datasets and MNIST)
+"alpha_prime_full.R" (This one is for six UCI datasets and MNIST. Datasets are included in "benchmark_datasets.zip". )
 
-"alpha_prime_tinyimagenet.R" (this one is for Tiny ImageNet)
+"alpha_prime_tinyimagenet.R" (this one is for Tiny ImageNet. The scores for data points in Tiny ImageNet are included in "benchmark_datasets.zip". The scores are got through the method in Dan Hendrycks and Kevin Gimpel's 2017 paper: A baseline for detecting misclassified and out-of-distribution examples in neural networks.)
 
 ### Producing learning curve of nine estimators for alpha on six UCI datasets:
 
