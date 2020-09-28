@@ -7,8 +7,6 @@ The iForest (Isolation Forest) inplementation used here is provided by Tadesse Z
 
 "Open-Category-Detection-with-PAC-Guaranteesp-Synthetic.ipynb"
 
-The bootstrap and out-of-bag version of Loda used in this part is provided Tadesse ZeMicheal and Si Liu and available as an R package from https://github.com/liusi2019/btloda .
-
 ### Threshold estimate experiments on benchmark datasets:
 
 "alpha_prime_full.R" (This one is for six UCI datasets and MNIST. Datasets are included in "benchmark_datasets.zip". )
