@@ -17,6 +17,8 @@ The iForest (Isolation Forest) inplementation used here is provided by Tadesse Z
 
 "learning_curve_nine.R"
 
+The code file "KM.py" for the first four estimators: alpha_1, alpha_2, alpha_1score and alpha_2score are modified from the code as in link http://web.eecs.umich.edu/~cscott/code.html#kmpe for the paper "Mixture Proportion Estimation via Kernel Embedding of Distributions" by Harish G. Ramaswamy, Clayton Scott and Ambuj Tewari.
+
 ### Comparing the performance of five etsimators for alpha and threshold estimation on six UCI datasets, based on anomaly scores from iForest:
 
 "iforest_five_alpha.R"
