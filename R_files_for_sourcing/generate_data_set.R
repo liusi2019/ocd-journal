@@ -55,7 +55,7 @@ if (data_name == "landsat"){
   data=read.csv('benchmark_datasets/letter-recognition.data', header = FALSE)
   n_col=ncol(data)
   o_col=1
-  data[[1]]=as.numeric(data[[1]])
+  data[[1]]=as.numeric(as.factor(data[[1]]))
   #known_classes=c(1,3,5,7,9,11,13,15,17,19,21,23,26,25)
   known_classes=c(1,3) # as stated in icml2018 paper
   big_nominal = subset(data,data[[o_col]] %in% known_classes)
