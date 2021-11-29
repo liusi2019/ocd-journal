@@ -32,7 +32,7 @@ evaluation <- function(k){
   
   random_seeds = as.numeric(unlist(read.csv("random_seeds.csv", header = TRUE)))
   
-  epsilon <- 0.05  # target on 5% quantile
+  q <- 0.05  # target on 5% quantile
   
   ## %%% part 0: basic settings
   name_vec = c("landsat", "LR", "OCR", "pageb", "shuttle", "covertype")
@@ -129,7 +129,7 @@ evaluation <- function(k){
   
   est_c_patrasen = method_c_patrasen(p0, p1) ## c-patra/sen
   
-  output <- cv_result(1 - p1, 1 - p0, na, est_c_patrasen, epsilon)
+  output <- cv_result(1 - p1, 1 - p0, na, est_c_patrasen, q)
   col_data_name[r_index] = data_name
   col_alpha[r_index] = alpha
   col_est_name[r_index] = "c_patrasen"
@@ -143,7 +143,7 @@ evaluation <- function(k){
   
   ## use true alpha
   r_index = r_index + 1
-  output <- cv_result(1 - p1, 1 - p0, na, alpha, epsilon)
+  output <- cv_result(1 - p1, 1 - p0, na, alpha, q)
   col_data_name[r_index] = data_name
   col_alpha[r_index] = alpha
   col_est_name[r_index] = "truth"
@@ -170,7 +170,7 @@ evaluation <- function(k){
   boot_num = 100
   est_bt_patrasen = bt_patrasen(1 - p1, 1 - p0, grid_num = grid_num, boot_num = boot_num)
     
-  output <- cv_result(1 - p1, 1 - p0, na, est_bt_patrasen, epsilon)
+  output <- cv_result(1 - p1, 1 - p0, na, est_bt_patrasen, q)
   col_data_name[r_index] = data_name
   col_alpha[r_index] = alpha
   col_est_name[r_index] = "bt_patrasen"
@@ -187,7 +187,7 @@ evaluation <- function(k){
   
   est_c_roc = method_c_roc(p0, p1) ## c-roc
   
-  output <- cv_result(1 - p1,  1 - p0, na, est_c_roc, epsilon)
+  output <- cv_result(1 - p1,  1 - p0, na, est_c_roc, q)
   col_data_name[r_index] = data_name
   col_alpha[r_index] = alpha
   col_est_name[r_index] = "c_roc"
@@ -211,7 +211,7 @@ evaluation <- function(k){
     
   #output <- cv_result(datab, datan, na, est_roc, epsilon)
   # the following line is under the assumption that clean size = mixture size, and the method_roc has mixture before clean in yhat
-  output <- cv_result(1 - yhat_roc[(n+1):(2*n)], 1 - yhat_roc[1:n], na, est_roc, epsilon)
+  output <- cv_result(1 - yhat_roc[(n+1):(2*n)], 1 - yhat_roc[1:n], na, est_roc, q)
   col_data_name[r_index] = data_name
   col_alpha[r_index] = alpha
   col_est_name[r_index] = "roc"
@@ -229,7 +229,7 @@ evaluation <- function(k){
   
   #output <- cv_result(datab, datan, na, est_spy, epsilon)
   # directly use the previous random forest result, instead of modifying spy method and return predicted probability
-  output <- cv_result(1 - p1, 1 - p0, na, est_spy, epsilon)
+  output <- cv_result(1 - p1, 1 - p0, na, est_spy, q)
   col_data_name[r_index] = data_name
   col_alpha[r_index] = alpha
   col_est_name[r_index] = "spy"
