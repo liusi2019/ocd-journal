@@ -17,18 +17,18 @@ evaluation <- function(h){
 
   random_seeds = as.numeric(unlist(read.csv("random_seeds.csv", header = TRUE)))
   
-  epsilon_vec = c(0.02, 0.05, 0.10)  # aim at different quantiles
+  q_vec = c(0.02, 0.05, 0.10)  # aim at different quantiles
   name_vec = c( "tinyimagenet")
   alpha_vec = c(0.10, 0.20, 0.40)
   over_alpha = c(0, 0.002, 0.004, 0.006, 0.008, 0.01)
   
-  n_epsilon = length(epsilon_vec)
+  n_q = length(q_vec)
   n_name = length(name_vec)
   n_alpha = length(alpha_vec) # number of different true alpha values
   n_est = length(over_alpha) # how many different values of alpha primes to use, including the true alpha
   
 
-  total_row = n_name * 1 * n_est * n_epsilon
+  total_row = n_name * 1 * n_est * n_q
 
   score_clean = as.numeric(unlist(read.csv("benchmark_datasets/data_clean.csv", header = FALSE)))
   score_alien = as.numeric(unlist(read.csv("benchmark_datasets/data_alien.csv", header = FALSE)))
@@ -39,7 +39,7 @@ evaluation <- function(h){
   vpro = round(alpha * 100)
   
   col_data_name = rep("", total_row)
-  col_epsilon = rep(0, total_row)
+  col_q = rep(0, total_row)
   col_alpha = rep(0, total_row)
   col_est_alpha = rep(0, total_row) 
   col_recall = rep(0, total_row)
@@ -67,13 +67,13 @@ evaluation <- function(h){
   datan = c(anomaly, nominal_total[(n+1):n0_total])
 
   for (t in 1:length(over_alpha)){
-    for (eps_ind in 1:n_epsilon){
-      epsilon = epsilon_vec[eps_ind]
+    for (q_ind in 1:n_q){
+      q = q_vec[q_ind]
       r_index = r_index + 1
       curr_alpha = alpha + over_alpha[t]
-      output <- cv_result(datab, datan, na, curr_alpha, epsilon)
+      output <- cv_result(datab, datan, na, curr_alpha, q)
       col_data_name[r_index] = data_name
-      col_epsilon[r_index] = epsilon
+      col_q[r_index] = q
       col_alpha[r_index] = alpha
       col_est_alpha[r_index] = curr_alpha
       col_recall[r_index] = output[1]
@@ -85,7 +85,7 @@ evaluation <- function(h){
   
   }
   df_output = data.frame("data_name" = col_data_name, 
-                         "epsilon" = col_epsilon,
+                         "q" = col_q,
                          "alpha" = col_alpha, 
                          "est_alpha" = col_est_alpha, 
                          "recall" = col_recall,
