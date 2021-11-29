@@ -3,17 +3,17 @@ Code for replicating the experimental results in ocd journel version.
 
 The iForest (Isolation Forest) inplementation used here is provided by Tadesse ZeMicheal and available from https://github.com/tadeze/osu_iforest .
 
-### Threshold estimate experiments on synthetic datasets:
+### Threshold estimate experiments on synthetic data sets:
 
 "Open-Category-Detection-with-PAC-Guaranteesp-Synthetic.ipynb"
 
-### Threshold estimate experiments on benchmark datasets:
+### Threshold estimate experiments on benchmark data sets:
 
 "alpha_prime_full.R" (This one is for six UCI datasets and MNIST. Datasets are included in "benchmark_datasets.zip". )
 
 "alpha_prime_tinyimagenet.R" (This one is for Tiny ImageNet. The scores for data points in Tiny ImageNet are included in "benchmark_datasets.zip". The scores are got through the method in Dan Hendrycks and Kevin Gimpel's 2017 paper: A baseline for detecting misclassified and out-of-distribution examples in neural networks.)
 
-### Producing learning curve of nine estimators for alpha on six UCI datasets:
+### Producing learning curve of nine estimators for alpha on six UCI data sets:
 
 "learning_curve_nine.R"
 
