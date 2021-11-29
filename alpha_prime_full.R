@@ -23,9 +23,9 @@ evaluation <- function(h){
   
   random_seeds = as.numeric(unlist(read.csv("random_seeds.csv", header = TRUE)))
   
-  epsilon_vec <- c(0.02, 0.05, 0.10)  # aim at different quantiles
+  q_vec <- c(0.02, 0.05, 0.10)  # aim at different quantiles
   ## leave it here for now
-  ## check how the loops are done over different alphas and epsilon
+  ## check how the loops are done over different alphas and q
   ## how about writing everything out into one file, for each h
   
   ## %%% part 0: basic settings
@@ -33,7 +33,7 @@ evaluation <- function(h){
   alpha_vec = c(0.10, 0.20, 0.40)
   over_alpha = c(0, 0.002, 0.004, 0.006, 0.008, 0.01)
   
-  n_epsilon = length(epsilon_vec)
+  n_q = length(q_vec)
   n_name = length(name_vec)
   n_alpha = length(alpha_vec) # number of different true alpha values
   n_est = length(over_alpha) # how many different values of alpha primes to use, including the true alpha
@@ -41,7 +41,7 @@ evaluation <- function(h){
   ## create vectors to hold results
   ## the final data frame should contain: data_name, alpha, est_alpha, recall, FPR
   ## write one file out each time for one alpha, so set the middle item to be 1
-  total_row = n_name * 1 * n_est * n_epsilon
+  total_row = n_name * 1 * n_est * n_q
 
 
   
@@ -51,7 +51,7 @@ evaluation <- function(h){
   vpro = round(alpha * 100)
   
   col_data_name = rep("", total_row)
-  col_epsilon = rep(0, total_row)
+  col_q = rep(0, total_row)
   col_alpha = rep(0, total_row)
   #col_est_name = rep("", total_row)
   col_est_alpha = rep(0, total_row) 
@@ -163,13 +163,13 @@ evaluation <- function(h){
   ## %%% part 3: get recall & FPR from multiple values of 
   
   for (t in 1:length(over_alpha)){
-    for (eps_ind in 1:n_epsilon){
-      epsilon = epsilon_vec[eps_ind]
+    for (q_ind in 1:n_q){
+      q = q_vec[q_ind]
       r_index = r_index + 1
       curr_alpha = alpha + over_alpha[t]
-      output <- cv_result(datab, datan, na, curr_alpha, epsilon)
+      output <- cv_result(datab, datan, na, curr_alpha, q)
       col_data_name[r_index] = data_name
-      col_epsilon[r_index] = epsilon
+      col_q[r_index] = q
       col_alpha[r_index] = alpha
       col_est_alpha[r_index] = curr_alpha
       col_recall[r_index] = output[1]
@@ -181,7 +181,7 @@ evaluation <- function(h){
   
   }
   df_output = data.frame("data_name" = col_data_name, 
-                         "epsilon" = col_epsilon,
+                         "q" = col_q,
                          "alpha" = col_alpha, 
                          "est_alpha" = col_est_alpha, 
                          "recall" = col_recall,
