@@ -1,22 +1,22 @@
 ## this file contains the functions for estimating threshold and getting the recall & FPR
 
-raw_cdf<- function(datab, datan, alpha, epsilon){
+raw_cdf<- function(datab, datan, alpha, q){
   trialv <- sort(c(datan, datab))
   F.n <- ecdf(datan)
   Fn  <- F.n(trialv)
   F.b <- ecdf(datab)
   Fb <- F.b(trialv)
   Fa <- (Fn - (1-alpha)*Fb)/alpha 
-  if (length(which(Fa <= epsilon))==0){
+  if (length(which(Fa <= q))==0){
     index <- 1
   }else{
-    index <-max(which(Fa <= epsilon))
+    index <-max(which(Fa <= q))
   }
   return(trialv[index])
 }
 
 
-cv_result <- function(datab, datan, na, alpha_est, epsilon){
+cv_result <- function(datab, datan, na, alpha_est, q){
   ## 10 fold cross validation
   nn <- length(datan)
   ## need to pay attention to whether nn * alpha is an integer or not
@@ -54,7 +54,7 @@ cv_result <- function(datab, datan, na, alpha_est, epsilon){
     index_use <- use_df$index ## index of the 9 folds
     index_test <- test_df$index ## index of the 1 fold
     
-    est <- raw_cdf(datab, use_datan, alpha_est, epsilon) ## estimate from raw ECDF method
+    est <- raw_cdf(datab, use_datan, alpha_est, q) ## estimate from raw ECDF method
     
     
     if (length(which(test_datan >= est))==0){
